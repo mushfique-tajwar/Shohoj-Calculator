@@ -71,6 +71,37 @@ def execute():
             equation_for_show = ""
     label_result.config(text = result)
 
+# Keyboard bindings
+
+def key_press(event):
+    key = event.char
+    if key.isdigit() or key in "+-*/().":
+        show(key)
+    elif key == "x" or key == "*":
+        show("x")
+    elif key == "=" or key == "\r":
+        execute()
+    elif key == "\x08":
+        undo()
+
+# Special key handling
+
+def key_special(event):
+    if event.keysym == "Return":
+        execute()
+    elif event.keysym == "BackSpace":
+        undo()
+    elif event.keysym == "Escape":
+        clear()
+
+# Bind keys to functions
+
+root.bind("<Key>", key_press)
+root.bind("<Return>", key_special)
+root.bind("<BackSpace>", key_special)
+root.bind("<Escape>", key_special)
+
+
 # Displaybox vvv
 
 label_result=Label(root, width = 25, height = 2, text = "", font = ("Arial", 30), bg = "#2f2f2f", fg = "#ffffff", anchor = "e")
