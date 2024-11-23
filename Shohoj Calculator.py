@@ -3,8 +3,9 @@ from tkinter import *
 import webbrowser
 
 #Opening GitHub
+
 def open_github(event):
-    webbrowser.open_new("https://github.com/rutaaaaab")
+    webbrowser.open_new("https://github.com/mushfique.tajwar")
 
 #Creating the GUI vvv
 
